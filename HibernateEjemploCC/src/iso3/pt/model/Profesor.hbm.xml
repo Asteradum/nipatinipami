@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="iso3.pt.model.Profesor" table="PROFESOR">
+
+        <id name="id" column="PROF_ID">
+            <generator class="native"/>
+        </id>
+
+        <property name="nombre" column="PROF_NOMBRE" unique="true" not-null="true"/>
+		
+		<!--
+		<set name="empleados" lazy="true" cascade="all" inverse="true">
+			<key column="DEP_ID"/>
+			<one-to-many class="iso3.hib.ejemploCC.Empleado"/>
+		</set>
+		-->
+		
+    </class>
+
+</hibernate-mapping>
