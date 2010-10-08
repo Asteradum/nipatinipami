@@ -1,5 +1,5 @@
 package iso3.pt.model;
-//lalala
+//lalalalolo
 public class Alumno {
 	
 	private Integer dni;
