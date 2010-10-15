@@ -1,10 +1,9 @@
 package iso3.pt.model;
 
 public class Profesor {
-	public Profesor(Integer id, Integer dNI, String password, String nombre,
+	public Profesor(Integer dNI, String password, String nombre,
 			String telefono, String email, String despacho) {
 		super();
-		this.id = id;
 		dni = dNI;
 		this.password = password;
 		this.nombre = nombre;
