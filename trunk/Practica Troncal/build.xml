@@ -5,16 +5,16 @@
     <property name="source.dir" value="src"/>
     <property name="build.dir" value="bin"/>
     <property name="lib.dir" value="lib"/>
-    <!--<property name="hibernate.dir" value="C:\Programming\Java\hibernate-distribution-3.3.2.GA"/>-->
+    <property name="hibernate.dir" value="C:\Programacion\hibernate-distribution-3.5.5-Final"/>
     
 	<path id="classpath">
         <pathelement path="${build.dir}"/>
         <fileset dir="${lib.dir}">
             <include name="*.jar"/>
         </fileset>
-        <!--<fileset dir="${hibernate.dir}">
+        <fileset dir="${hibernate.dir}">
             <include name="**/*.jar"/>
-        </fileset>-->
+        </fileset>
     </path>
 	
     <target name="clean">
@@ -39,15 +39,15 @@
     	</copy>
     </target>
 	
-    <!--
+    
     <target name="test" depends="build">
-        <java classname="iso3.hib.ejemploCC.Test" fork="true">
+        <java classname="iso3.pt.model.Test" fork="true">
             <classpath>
                 <path refid="classpath"/>
             </classpath>
         </java>
     </target>
-    -->
+  
     <target name="help">
 		<echo>Usage: ant [build | clean]</echo>
 	</target>

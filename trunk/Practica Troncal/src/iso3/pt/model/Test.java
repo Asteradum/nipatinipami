@@ -19,6 +19,9 @@ public class Test {
 	        Session session = sessionFactory.openSession();
 	        Transaction tx = session.beginTransaction();
 	        
+	        Profesor prof1 = new Profesor(78944100, "prof1", "Profesor1", "", "", "");
+	        Profesor prof2 = new Profesor(78944100, "prof2", "Profesor2", "", "", "");
+	        /*
 	        Departamento dep1 = new Departamento("Ingenieria del Software");
 	        Departamento dep2 = new Departamento("Servicios - ESIDE");
 	        
@@ -40,8 +43,9 @@ public class Test {
 	        emp3.setDepartamento(dep2);
 	        emp4.setDepartamento(dep2);
 	        
-	        session.save(emp3); // Innecesarias, se insertarían los dos empleados al actualizar el "dep2"
-	        session.save(emp4);
+	        */
+	        session.save(prof1); // Innecesarias, se insertarían los dos empleados al actualizar el "dep2"
+	        session.save(prof2);
 	        
 	        tx.commit();
 	        session.close();
@@ -173,11 +177,13 @@ public class Test {
 	    public static void main(String[] args) {
 	    	Test t1 = new Test();
 	    	t1.inserciones1();
+	    	/*
 	    	t1.busquedaPK();
 	    	t1.inserciones2();
 	    	t1.busquedaCompleja();
 	    	t1.borrado();
 	    	t1.inserciones3();
+	    	*/
 	    	t1.close();
 	    }
 	}
