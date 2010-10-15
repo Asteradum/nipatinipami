@@ -15,6 +15,12 @@ public class Asignatura {
 	private Integer code;
 	private String nombre;
 	private float creditos;
+	
+	boolean estaMatriculado(Alumno al)
+	{
+		return false;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
