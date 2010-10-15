@@ -41,11 +41,27 @@ public class Test {
 	        asig2.addUnidad(ud4);
 	        asig2.addUnidad(ud5);
 	        
+	        Alumno al1 = new Alumno(78955100, "al1", "Alvaro Martin", "");
+	        Alumno al2 = new Alumno(12345678, "al2", "Sonia Pierola", "");
+	        
+	        al1.addAsignatura(asig1);
+	        al1.addAsignatura(asig2);
+	        
+	        al2.addAsignatura(asig2);
+	        
+	        asig1.addAlumno(al1);
+	        
+	        asig2.addAlumno(al1);
+	        asig2.addAlumno(al2);
+	        
 	        session.save(prof1);
 	        session.save(prof2);
 	        
 	        session.save(asig1);
 	        session.save(asig2);
+	        
+	        session.save(al1);
+	        session.save(al2);
 	        
 	        tx.commit();
 	        session.close();

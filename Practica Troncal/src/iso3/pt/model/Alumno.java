@@ -1,11 +1,16 @@
 package iso3.pt.model;
-//lalalalolo
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Alumno {
 	
 	private Integer dni;
 	private String password;
 	private String nombre;
 	private String telefono;
+	private List<Asignatura> asignaturas = new ArrayList<Asignatura>();
 	
 	public Alumno() {
 		super();
@@ -43,6 +48,23 @@ public class Alumno {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
+	public void setAsignaturas(List<Asignatura> asignaturas) {
+		this.asignaturas = asignaturas;
+	}
+
+	public List<Asignatura> getAsignaturas() {
+		return asignaturas;
+	}
 	
+	public void addAsignatura(Asignatura a)
+	{
+		asignaturas.add(a);
+	}
+	
+	public void removeAsignatura(Asignatura a)
+	{
+		asignaturas.remove(a);
+	}
 
 }

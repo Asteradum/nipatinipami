@@ -20,10 +20,14 @@ public class Asignatura {
 	
 	private List<Unidad> unidades = new ArrayList<Unidad>();
 	private Profesor profesor;
+	private List<Alumno> alumnos = new ArrayList<Alumno>();
 	
 	boolean estaMatriculado(Alumno al)
 	{
-		return false;
+		if (alumnos.contains(al))
+			return true;
+		else
+			return false;
 	}
 	
 	public Integer getId() {
@@ -69,6 +73,20 @@ public class Asignatura {
 	}
 	public Profesor getProfesor() {
 		return profesor;
+	}
+	public void setAlumnos(List<Alumno> alumnos) {
+		this.alumnos = alumnos;
+	}
+	public List<Alumno> getAlumnos() {
+		return alumnos;
+	}
+	public void addAlumno(Alumno a)
+	{
+		alumnos.add(a);
+	}
+	public void removeAlumno(Alumno a)
+	{
+		alumnos.remove(a);
 	}
 
 }
