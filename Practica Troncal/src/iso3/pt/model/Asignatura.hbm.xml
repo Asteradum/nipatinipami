@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="iso3.pt.model.Asignatura" table="ASIGNATURA">
+
+        <id name="id" column="ASIG_ID">
+            <generator class="native"/>
+        </id>
+        
+		<property name="code" column="ASIG_COD" unique="true" not-null="true"/>
+        <property name="nombre" column="ASIG_NOMBRE" not-null="true"/>
+		<property name="creditos" column="ASIG_CREDITOS"/>
+		
+		<list name="unidades" lazy="true" cascade="delete, save-update">
+			<key column="ID_UNIDAD"/>
+			<index column="ID"/>
+			<one-to-many class="iso3.pt.model.Unidad"/>
+		</list>
+		
+		<many-to-one name="profesor" column="PROF_ID"/>
+		
+    </class>
+
+</hibernate-mapping>

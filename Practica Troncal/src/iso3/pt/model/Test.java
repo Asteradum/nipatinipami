@@ -21,31 +21,31 @@ public class Test {
 	        
 	        Profesor prof1 = new Profesor(78944100, "prof1", "Profesor1", "", "", "");
 	        Profesor prof2 = new Profesor(78944100, "prof2", "Profesor2", "", "", "");
-	        /*
-	        Departamento dep1 = new Departamento("Ingenieria del Software");
-	        Departamento dep2 = new Departamento("Servicios - ESIDE");
+
+	        Asignatura asig1 = new Asignatura(1, "Ingenieria del Software", 6);
+	        Asignatura asig2 = new Asignatura(2, "EDR", (float) 4.5);
 	        
-	        Empleado emp1 = new Empleado(111, "Asier Perallos", "profesor", "perallos@eside.deusto.es");
-	        Empleado emp2 = new Empleado(222, "Diego Lopez de Ipina", "profesor", "dipina@eside.deusto.es");
-	        Empleado emp3 = new Empleado(333, "Maite Sanchez", "secretaria", "msanchez@eside.deusto.es");
-	        Empleado emp4 = new Empleado(444, "Ana Carrera", "secretaria", "acarrera@eside.deusto.es");
+	        asig1.setProfesor(prof1);
 	        
-	        dep1.addEmpleado(emp1);
-	        dep1.addEmpleado(emp2);
-	        emp1.setDepartamento(dep1);
-	        emp2.setDepartamento(dep1);
+	        Unidad ud1 = new Unidad("HIB", "Hibernate", "");
+	        Unidad ud2 = new Unidad("STR", "Strut2", "");
+	        Unidad ud3 = new Unidad("MySQL", "MySQL Server y Admin tool", "");
 	        
-	        session.save(dep1); // Se salvan los dos empleados del "dep1" en cascada
-	        session.save(dep2);
+	        Unidad ud4 = new Unidad("VSLM", "Variable Subnet Lenght Masks", "");
+	        Unidad ud5 = new Unidad("ROUTERS", "Routers CISCO", "");
 	        
-	        dep2.addEmpleado(emp3);
-	        dep2.addEmpleado(emp4);
-	        emp3.setDepartamento(dep2);
-	        emp4.setDepartamento(dep2);
+	        asig1.addUnidad(ud1);
+	        asig1.addUnidad(ud2);
+	        asig1.addUnidad(ud3);
 	        
-	        */
-	        session.save(prof1); // Innecesarias, se insertarían los dos empleados al actualizar el "dep2"
+	        asig2.addUnidad(ud4);
+	        asig2.addUnidad(ud5);
+	        
+	        session.save(prof1);
 	        session.save(prof2);
+	        
+	        session.save(asig1);
+	        session.save(asig2);
 	        
 	        tx.commit();
 	        session.close();

@@ -27,11 +27,11 @@ public class Profesor {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getDNI() {
+	public Integer getDni() {
 		return dni;
 	}
-	public void setDNI(Integer dNI) {
-		dni = dNI;
+	public void setDni(Integer dni) {
+		this.dni = dni;
 	}
 	public String getPassword() {
 		return password;

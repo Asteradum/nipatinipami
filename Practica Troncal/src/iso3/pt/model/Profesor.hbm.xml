@@ -10,15 +10,12 @@
         <id name="id" column="PROF_ID">
             <generator class="native"/>
         </id>
-
+        <property name="dni" column="PROF_DNI"/>
+		<property name="password" column="PROF_PASS"/>
         <property name="nombre" column="PROF_NOMBRE" unique="true" not-null="true"/>
-		
-		<!--
-		<set name="empleados" lazy="true" cascade="all" inverse="true">
-			<key column="DEP_ID"/>
-			<one-to-many class="iso3.hib.ejemploCC.Empleado"/>
-		</set>
-		-->
+		<property name="telefono" column="PROF_TLF"/>
+		<property name="email" column="PROF_EMAIL"/>
+		<property name="despacho" column="PROF_DESP"/>
 		
     </class>
 
