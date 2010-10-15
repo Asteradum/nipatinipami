@@ -21,6 +21,12 @@
 			<one-to-many class="iso3.pt.model.Unidad"/>
 		</list>
 		
+		<list name="alumnos" table="MATRICULACION" lazy="true">
+			<key column="DNI_ALUMNO"/>
+			<index column="ID_DNI"/>
+			<many-to-many class="iso3.pt.model.Alumno"/>
+		</list>
+		
 		<many-to-one name="profesor" column="PROF_ID"/>
 		
     </class>
