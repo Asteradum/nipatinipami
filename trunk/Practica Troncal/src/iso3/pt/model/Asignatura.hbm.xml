@@ -15,17 +15,16 @@
         <property name="nombre" column="ASIG_NOMBRE" not-null="true"/>
 		<property name="creditos" column="ASIG_CREDITOS"/>
 		
-		<list name="unidades" lazy="true" cascade="delete, save-update">
+		<list name="unidades" lazy="true" cascade="all">
 			<key column="ID_UNIDAD"/>
 			<index column="ID"/>
 			<one-to-many class="iso3.pt.model.Unidad"/>
 		</list>
 		
-		<list name="alumnos" table="MATRICULACION" lazy="true">
-			<key column="DNI_ALUMNO"/>
-			<index column="ID_DNI"/>
-			<many-to-many class="iso3.pt.model.Alumno"/>
-		</list>
+		<set name="alumnos" table="MATRICULACION" lazy="true">
+			<key column="AL_DNI"/>
+			<many-to-many column="ASIG_ID" class="iso3.pt.model.Alumno"/>
+		</set>
 		
 		<many-to-one name="profesor" column="PROF_ID"/>
 		
