@@ -20,6 +20,11 @@
 			<many-to-many column="AL_DNI" class="iso3.pt.model.Asignatura"/>
 		</set>
 		
+		<set name="evaluaciones" lazy="true" cascade="all">
+			<key column="Al_DNI"/>
+			<one-to-many class="iso3.pt.model.Evaluacion"/>
+		</set>
+		
     </class>
 
 </hibernate-mapping>

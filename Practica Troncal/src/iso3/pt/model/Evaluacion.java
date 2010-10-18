@@ -1,6 +1,14 @@
 package iso3.pt.model;
 
 public class Evaluacion {
+	
+	private Integer id;
+	private String concepto;
+	private float nota;
+	
+	private Alumno alumno;
+	private Asignatura asignatura;
+	
 	public Evaluacion() {
 		super();
 	}
@@ -9,13 +17,6 @@ public class Evaluacion {
 		this.concepto = concepto;
 		this.nota = nota;
 	}
-	private Integer id;
-	private String concepto;
-	private  float nota;
-	
-	private Alumno alumno;
-	private Asignatura asignatura;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -33,5 +34,17 @@ public class Evaluacion {
 	}
 	public void setNota(float nota) {
 		this.nota = nota;
+	}
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
+	}
+	public Asignatura getAsignatura() {
+		return asignatura;
+	}
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+	public Alumno getAlumno() {
+		return alumno;
 	}
 }
