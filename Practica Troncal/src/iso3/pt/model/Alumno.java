@@ -1,7 +1,9 @@
 package iso3.pt.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class Alumno {
@@ -10,10 +12,14 @@ public class Alumno {
 	private String password;
 	private String nombre;
 	private String telefono;
-	private List<Asignatura> asignaturas = new ArrayList<Asignatura>();
+	
+	private Set<Asignatura> asignaturas; 
+	private List<Evaluacion> evaluaciones;
 	
 	public Alumno() {
 		super();
+		evaluaciones = new ArrayList<Evaluacion>();
+		asignaturas = new HashSet<Asignatura>();
 	}
 
 	public Alumno(Integer dni, String password, String nombre, String telefono) {
@@ -22,6 +28,8 @@ public class Alumno {
 		this.password = password;
 		this.nombre = nombre;
 		this.telefono = telefono;
+		evaluaciones = new ArrayList<Evaluacion>();
+		asignaturas = new HashSet<Asignatura>();
 	}
 	
 	public Integer getDni() {
@@ -49,11 +57,11 @@ public class Alumno {
 		this.telefono = telefono;
 	}
 
-	public void setAsignaturas(List<Asignatura> asignaturas) {
+	public void setAsignaturas(Set<Asignatura> asignaturas) {
 		this.asignaturas = asignaturas;
 	}
 
-	public List<Asignatura> getAsignaturas() {
+	public Set<Asignatura> getAsignaturas() {
 		return asignaturas;
 	}
 	
@@ -65,6 +73,24 @@ public class Alumno {
 	public void removeAsignatura(Asignatura a)
 	{
 		asignaturas.remove(a);
+	}
+
+	public void setEvaluaciones(List<Evaluacion> evaluaciones) {
+		this.evaluaciones = evaluaciones;
+	}
+
+	public List<Evaluacion> getEvaluaciones() {
+		return evaluaciones;
+	}
+	
+	public void addEvaluacion(Evaluacion e)
+	{
+		evaluaciones.add(e);
+	}
+	
+	public void removeEvaluacion(Evaluacion e)
+	{
+		evaluaciones.remove(e);
 	}
 
 }

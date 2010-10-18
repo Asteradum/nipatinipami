@@ -14,13 +14,12 @@
         <property name="password" column="AL_PASS"/>
 		<property name="nombre" column="AL_NOMBRE"/>
         <property name="telefono" column="AL_TLF"/>
-        <!--
-        <list name="asignaturas" table="MATRICULACION" lazy="true" inverse="true">
-			<key column="AL_ASIG"/>
-			<index column="ID_ASIG"/>
-			<many-to-many class="iso3.pt.model.Asignatura"/>
-		</list>
-		-->
+        
+        <set name="asignaturas" table="MATRICULACION" lazy="true" inverse="true">
+			<key column="ASIG_ID" not-null="true"/>
+			<many-to-many column="AL_DNI" class="iso3.pt.model.Asignatura"/>
+		</set>
+		
     </class>
 
 </hibernate-mapping>

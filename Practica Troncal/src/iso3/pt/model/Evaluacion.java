@@ -4,15 +4,18 @@ public class Evaluacion {
 	public Evaluacion() {
 		super();
 	}
-	public Evaluacion(Integer id, String concepto, float nota) {
+	public Evaluacion(String concepto, float nota) {
 		super();
-		this.id = id;
 		this.concepto = concepto;
 		this.nota = nota;
 	}
 	private Integer id;
 	private String concepto;
 	private  float nota;
+	
+	private Alumno alumno;
+	private Asignatura asignatura;
+	
 	public Integer getId() {
 		return id;
 	}
