@@ -14,11 +14,11 @@ public class Alumno {
 	private String telefono;
 	
 	private Set<Asignatura> asignaturas; 
-	private List<Evaluacion> evaluaciones;
+	private Set<Evaluacion> evaluaciones;
 	
 	public Alumno() {
 		super();
-		evaluaciones = new ArrayList<Evaluacion>();
+		evaluaciones = new HashSet<Evaluacion>();
 		asignaturas = new HashSet<Asignatura>();
 	}
 
@@ -28,7 +28,7 @@ public class Alumno {
 		this.password = password;
 		this.nombre = nombre;
 		this.telefono = telefono;
-		evaluaciones = new ArrayList<Evaluacion>();
+		evaluaciones = new HashSet<Evaluacion>();
 		asignaturas = new HashSet<Asignatura>();
 	}
 	
@@ -75,11 +75,11 @@ public class Alumno {
 		asignaturas.remove(a);
 	}
 
-	public void setEvaluaciones(List<Evaluacion> evaluaciones) {
+	public void setEvaluaciones(Set<Evaluacion> evaluaciones) {
 		this.evaluaciones = evaluaciones;
 	}
 
-	public List<Evaluacion> getEvaluaciones() {
+	public Set<Evaluacion> getEvaluaciones() {
 		return evaluaciones;
 	}
 	

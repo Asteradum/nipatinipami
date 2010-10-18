@@ -44,6 +44,27 @@ public class Test {
 	        Alumno al1 = new Alumno(78955100, "al1", "Alvaro Martin", "");
 	        Alumno al2 = new Alumno(12345678, "al2", "Sonia Pierola", "");
 	        
+	        Evaluacion ev1 = new Evaluacion("Primera Evaluacion", 9);
+	        Evaluacion ev2 = new Evaluacion("Segunda Evaluacion", 7);
+	        Evaluacion ev3 = new Evaluacion("Recuperacion", 5);
+	        Evaluacion ev4 = new Evaluacion("Primera Evaluacion", 10);
+	        
+	        ev1.setAsignatura(asig1);
+	        ev1.setAlumno(al1);
+	        ev2.setAsignatura(asig1);
+	        ev2.setAlumno(al1);
+	        ev3.setAsignatura(asig2);
+	        ev3.setAlumno(al1);
+	        ev4.setAsignatura(asig1);
+	        ev4.setAlumno(al2);
+	        
+	        
+	        al1.addEvaluacion(ev1);
+	        al1.addEvaluacion(ev2);
+	        al1.addEvaluacion(ev3);
+	        al2.addEvaluacion(ev4);
+	        	        
+	        
 	        al1.addAsignatura(asig1);
 	        al1.addAsignatura(asig2);
 	        
@@ -54,6 +75,8 @@ public class Test {
 	        asig2.addAlumno(al1);
 	        asig2.addAlumno(al2);
 	        
+	        /*Saves*/
+	        
 	        session.save(prof1);
 	        session.save(prof2);
 	        
@@ -62,6 +85,11 @@ public class Test {
 	        
 	        session.save(al1);
 	        session.save(al2);
+	        
+	        session.save(ev1);
+	        session.save(ev2);
+	        session.save(ev3);
+	        session.save(ev4);
 	        
 	        tx.commit();
 	        session.close();
