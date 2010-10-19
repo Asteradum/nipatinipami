@@ -20,7 +20,7 @@ public class Test {
 	        Transaction tx = session.beginTransaction();
 	        
 	        Profesor prof1 = new Profesor(78944100, "prof1", "Profesor1", "", "", "");
-	        Profesor prof2 = new Profesor(78944100, "prof2", "Profesor2", "", "", "");
+	        Profesor prof2 = new Profesor(78944101, "prof2", "Profesor2", "", "", "");
 
 	        Asignatura asig1 = new Asignatura(1, "Ingenieria del Software", 6);
 	        Asignatura asig2 = new Asignatura(2, "EDR", (float) 4.5);
