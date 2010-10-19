@@ -1,10 +1,7 @@
 package iso3.pt.dao;
 
-import iso3.pt.model.Alumno;
-import iso3.pt.model.Asignatura;
-import iso3.pt.model.Evaluacion;
-import iso3.pt.model.Profesor;
-import iso3.pt.model.Unidad;
+import iso3.pt.dao.excepciones.*;
+import iso3.pt.model.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
