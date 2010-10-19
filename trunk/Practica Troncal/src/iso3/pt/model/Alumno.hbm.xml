@@ -21,7 +21,7 @@
 		</set>
 		
 		<set name="evaluaciones" lazy="true" cascade="all">
-			<key column="Al_DNI"/>
+			<key column="AL_DNI"/>
 			<one-to-many class="iso3.pt.model.Evaluacion"/>
 		</set>
 		

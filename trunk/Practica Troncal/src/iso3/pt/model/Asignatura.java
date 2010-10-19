@@ -28,7 +28,7 @@ public class Asignatura {
 	private Profesor profesor;
 	private Set<Alumno> alumnos;
 	
-	boolean estaMatriculado(Alumno al)
+	public boolean estaMatriculado(Alumno al)
 	{
 		if (alumnos.contains(al))
 			return true;

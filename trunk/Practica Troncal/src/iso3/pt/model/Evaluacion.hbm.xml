@@ -14,7 +14,7 @@
         <property name="concepto" column="EV_CONCEPTO" not-null="true"/>
 		<property name="nota" column="EV_NOTA" not-null="true"/>
 
-		<many-to-one name="alumno" column="AL_ID" not-null="true"/>
+		<many-to-one name="alumno" column="AL_DNI" not-null="true"/>
 		
 		<many-to-one name="asignatura" column="ASIG_ID" not-null="true"/>
     </class>
