@@ -3,6 +3,7 @@ package iso3.pt.dao;
 import java.util.List;
 import java.util.Set;
 
+import iso3.pt.dao.excepciones.*;
 import iso3.pt.model.Alumno;
 import iso3.pt.model.Asignatura;
 import iso3.pt.model.Evaluacion;
