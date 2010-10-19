@@ -20,7 +20,7 @@ import org.hibernate.cfg.Configuration;
 
 public class ptDAO implements IDAO {
 
-	private static IDAO instancia;
+	private static ptDAO instancia;
 	private SessionFactory sessionFactory;
 	private Session session;
 	private HashMap<Integer, Asignatura> asignaturas;
@@ -29,9 +29,8 @@ public class ptDAO implements IDAO {
 	{
 		 sessionFactory = new Configuration().configure().buildSessionFactory();
 		 session = sessionFactory.openSession();
-	     //Transaction tx = session.beginTransaction();
 	     
-	     List<Asignatura> ListAsignaturas = session.createQuery("from ASIGNATURA as AS").list();
+	     List<Asignatura> ListAsignaturas = session.createQuery("from Asignatura").list();
 	     asignaturas = new HashMap<Integer, Asignatura>();
 	     
 	     for(Iterator<Asignatura> i=ListAsignaturas.iterator();i.hasNext();)
@@ -39,13 +38,9 @@ public class ptDAO implements IDAO {
 	    	 Asignatura asig = i.next();
 	    	 asignaturas.put(asig.getId(), asig);
 	     }
-	     
-	     
-	     //tx.commit();
-	     
 	}
 	
-	public IDAO getInstancia()
+	public static ptDAO getInstancia()
 	{
 		if (instancia==null)
 			instancia = new ptDAO();
@@ -64,14 +59,14 @@ public class ptDAO implements IDAO {
 
 	@Override
 	public List<Evaluacion> getEvaluacionesOrderedByAsignatura(int idAlumno) {
-		List<Evaluacion> evaluaciones = session.createQuery("from EVALUACION as EV where AL_DNI="+ idAlumno +" order by ASIG_ID").list(); 
+		List<Evaluacion> evaluaciones = session.createQuery("from Evaluacion as EV where AL_DNI="+ idAlumno +" order by ASIG_ID").list(); 
 		return evaluaciones;
 	}
 
 	@Override
 	public Set<Evaluacion> getEvaluaciones(int idAsignatura, int idAlumno) {
 		Set<Evaluacion> setEvaluaciones = new HashSet<Evaluacion>();
-		List<Evaluacion> evaluaciones = session.createQuery("from EVALUACION as EV where AL_DNI="+ idAlumno +" and ASIG_ID=" + idAsignatura).list();
+		List<Evaluacion> evaluaciones = session.createQuery("from Evaluacion as EV where AL_DNI="+ idAlumno +" and ASIG_ID=" + idAsignatura).list();
 		for(Iterator<Evaluacion> i=evaluaciones.iterator();i.hasNext();)
 	     {
 	    	 Evaluacion evaluacion = i.next();
@@ -81,8 +76,21 @@ public class ptDAO implements IDAO {
 	}
 
 	@Override
-	public void addEvaluacion(String concepto, float nota, int idAsignatura,int idAlumno) {
-		// TODO Auto-generated method stub
+	public void addEvaluacion(String concepto, float nota, int idAsignatura,int idAlumno) 
+	{
+		Evaluacion ev = new Evaluacion (concepto, nota);
+		Asignatura asig = asignaturas.get(idAsignatura);
+		Alumno al = getAlumno(idAlumno);
+		
+		ev.setAlumno(al);
+		ev.setAsignatura(asig);
+		
+		al.addEvaluacion(ev);
+		
+		Transaction tx = session.beginTransaction();
+		session.save(al);
+		session.save(ev);
+		tx.commit();
 	}
 
 	@Override
@@ -100,12 +108,20 @@ public class ptDAO implements IDAO {
 	@Override
 	public Set<Asignatura> getAsignaturas() {
 		
-		return null;
+		Set<Asignatura> set = new HashSet<Asignatura>();
+		for(Iterator i=asignaturas.entrySet().iterator(); i.hasNext();)
+	     {
+			 Map.Entry ent = (Map.Entry)i.next();
+	    	 Asignatura asig = (Asignatura) ent.getValue();
+	    	 set.add(asig);
+	     }
+		
+		return set;
 	}
 
 	@Override
 	public Alumno getAlumno(int id) {
-		return (Alumno) session.createQuery("from ALUMNO where AL_DNI="+ id).uniqueResult();
+		return (Alumno) session.createQuery("from Alumno where AL_DNI="+ id).uniqueResult();
 	}
 
 	@Override
@@ -143,9 +159,11 @@ public class ptDAO implements IDAO {
 		{
 			asig.addAlumno(al);
 			al.addAsignatura(asig);
-		
+			
+			Transaction tx = session.beginTransaction();
 			session.save(asig);
 			session.save(al);
+			tx.commit();
 		}
 	}
 
@@ -158,8 +176,10 @@ public class ptDAO implements IDAO {
 			asig.removeAlumno(al);
 			al.removeAsignatura(asig);
 		
+			Transaction tx = session.beginTransaction();
 			session.save(asig);
 			session.save(al);
+			tx.commit();
 		}
 
 	}
@@ -188,14 +208,14 @@ public class ptDAO implements IDAO {
 
 	@Override
 	public Profesor getProfesorByDni(int dni) throws UserNotFoundException {
-		Profesor prof = (Profesor) session.createQuery("from PROFESOR where PROF_DNI="+ dni).uniqueResult();
+		Profesor prof = (Profesor) session.createQuery("from Profesor where PROF_DNI="+ dni).uniqueResult();
 		if (prof==null) throw new UserNotFoundException();
 		return prof;
 	}
 
 	@Override
 	public List<Evaluacion> getEvaluacionesAsignatura(int idAsignatura) {
-		return session.createQuery("from EVALUACION where ASIG_ID="+ idAsignatura).list();
+		return session.createQuery("from Evaluacion where ASIG_ID="+ idAsignatura).list();
 		
 	}
 	
