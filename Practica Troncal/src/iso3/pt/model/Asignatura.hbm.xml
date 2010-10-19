@@ -15,11 +15,10 @@
         <property name="nombre" column="ASIG_NOMBRE" not-null="true"/>
 		<property name="creditos" column="ASIG_CREDITOS"/>
 		
-		<list name="unidades" lazy="true" cascade="all">
-			<key column="ID_UNIDAD"/>
-			<index column="ID"/>
+		<set name="unidades" lazy="true" cascade="all">
+			<key column="ASIG_ID"/>
 			<one-to-many class="iso3.pt.model.Unidad"/>
-		</list>
+		</set>
 		
 		<set name="alumnos" table="MATRICULACION" lazy="true">
 			<key column="AL_DNI"/>

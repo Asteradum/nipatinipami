@@ -171,11 +171,6 @@ public class Test {
 	    public static void main(String[] args) {
 	    	Test t1 = new Test();
 	    	t1.inserciones1();
-	    	/*
-	    	t1.busquedaPK();
-	    	t1.busquedaCompleja();
-	    	t1.borrado();
-	    	*/
 	    	t1.close();
 	    }
 	}
