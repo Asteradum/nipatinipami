@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class TestDAO {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UserNotFoundException, IncorrectPasswordException {
 
 		ptDAO dao = ptDAO.getInstancia();
 		
@@ -81,7 +81,7 @@ public class TestDAO {
 			System.out.println("Nota: " + ev.getNota() + ", Concepto: " + ev.getConcepto());
 		}
 		
-		*/
+		
 		
 		unidades = dao.getUnidades(2);
 		System.out.println("Unidades de la Asignatura: " + dao.getAsignatura(2).getNombre());
@@ -91,8 +91,72 @@ public class TestDAO {
 			System.out.println("Titulo: " + u.getTitulo());
 		}
 		
-		dao.close();
 		
+		try {
+			al = dao.loginAlumno(78955100, "al1");
+			System.out.println(al.getNombre());
+		} catch (UserNotFoundException e) {
+			e.printStackTrace();
+		} catch (IncorrectPasswordException e) {
+			e.printStackTrace();
+		}
+		
+		asignaturas = dao.getAsignaturas(78955100);
+		for(Iterator<Asignatura> i = asignaturas.iterator();i.hasNext();) 
+		{
+			asig = i.next();
+			
+			System.out.println("Asignatura: " + asig.getNombre());
+		}
+		
+		dao.desmatricular(78955100, 2);
+		
+		asignaturas = dao.getAsignaturas(78955100);
+		for(Iterator<Asignatura> i = asignaturas.iterator();i.hasNext();) 
+		{
+			asig = i.next();
+			
+			System.out.println("Asignatura: " + asig.getNombre());
+		}
+		
+		dao.matricular(78955100, 2);
+		
+		asignaturas = dao.getAsignaturas(78955100);
+		for(Iterator<Asignatura> i = asignaturas.iterator();i.hasNext();) 
+		{
+			asig = i.next();
+			
+			System.out.println("Asignatura: " + asig.getNombre());
+		}
+		
+		
+		try {
+			Profesor prof = dao.loginProfesor(78944102, "prof1");
+			System.out.println("Profesor identificado: " + prof.getNombre());
+		} catch (UserNotFoundException e) {
+			e.printStackTrace();
+		} catch (IncorrectPasswordException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("Asignaturas impartidas por el profesor: " + dao.getProfesorByDni(78944100).getNombre());
+		asignaturas = dao.getAsignaturasProfesor(1);
+		for(Iterator<Asignatura> i = asignaturas.iterator();i.hasNext();) 
+		{
+			asig = i.next();
+			
+			System.out.println("Asignatura: " + asig.getNombre());
+		}
+		
+		
+		evaluaciones = dao.getEvaluacionesAsignatura(2);
+		System.out.println("Evaluaciones de la Asignatura: " + dao.getAsignatura(2).getNombre());
+		for(Iterator<Evaluacion> i3 =evaluaciones.iterator();i3.hasNext();)
+		{
+			ev = i3.next();
+			System.out.println("Evaluacion: " + ev.getConcepto());
+		}
+		*/
 	}
 
 }

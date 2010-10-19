@@ -186,7 +186,7 @@ public class ptDAO implements IDAO {
 
 	@Override
 	public Profesor loginProfesor(int dni, String pass) throws UserNotFoundException, IncorrectPasswordException {
-		Profesor prof = getProfesor(dni);
+		Profesor prof = getProfesorByDni(dni);
 		if (prof == null) throw new UserNotFoundException();
 		if (!prof.getPassword().equals(pass)) throw new IncorrectPasswordException();
 		return prof;
@@ -195,12 +195,13 @@ public class ptDAO implements IDAO {
 	@Override
 	public Set<Asignatura> getAsignaturasProfesor(int idProfesor) {
 		Set<Asignatura> set = new HashSet<Asignatura>();
-		Profesor prof = getProfesor(idProfesor);
+		Profesor prof;
 		for(Iterator i=asignaturas.entrySet().iterator(); i.hasNext();)
 	     {
 			 Map.Entry ent = (Map.Entry)i.next();
 	    	 Asignatura asig = (Asignatura) ent.getValue();
-	    	 if (asig.getProfesor().equals(prof))
+	    	 prof = asig.getProfesor();
+	    	 if (prof!= null && prof.getId().equals(idProfesor))
 	    	 	set.add(asig);
 	     }
 		return set;
