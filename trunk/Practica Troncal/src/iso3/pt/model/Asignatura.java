@@ -8,7 +8,7 @@ import java.util.Set;
 public class Asignatura {
 	public Asignatura() {
 		super();
-		unidades = new ArrayList<Unidad>();
+		unidades = new HashSet<Unidad>();
 		alumnos = new HashSet<Alumno>();
 	}
 	public Asignatura(Integer code, String nombre, float creditos) {
@@ -16,7 +16,7 @@ public class Asignatura {
 		this.code = code;
 		this.nombre = nombre;
 		this.creditos = creditos;
-		unidades = new ArrayList<Unidad>();
+		unidades = new HashSet<Unidad>();
 		alumnos = new HashSet<Alumno>();
 	}
 	private Integer id;
@@ -24,7 +24,7 @@ public class Asignatura {
 	private String nombre;
 	private float creditos;
 	
-	private List<Unidad> unidades;
+	private Set<Unidad> unidades;
 	private Profesor profesor;
 	private Set<Alumno> alumnos;
 	
@@ -60,10 +60,10 @@ public class Asignatura {
 	public void setCreditos(float creditos) {
 		this.creditos = creditos;
 	}
-	public void setUnidades(List<Unidad> unidades) {
+	public void setUnidades(Set<Unidad> unidades) {
 		this.unidades = unidades;
 	}
-	public List<Unidad> getUnidades() {
+	public Set<Unidad> getUnidades() {
 		return unidades;
 	}
 	public void addUnidad(Unidad u)
