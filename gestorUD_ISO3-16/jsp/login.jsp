@@ -7,9 +7,9 @@
 		type="text/css"/>
 	</head>
 	<body>
-		<s:form action="%{getText('label.login')}" method="POST">
+		<s:form action="login" method="POST">
 			<tr>
-				<td colspan="2">Login</td>
+				<td colspan="2"><s:text name="label.login"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">
