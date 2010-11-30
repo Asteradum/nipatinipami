@@ -21,7 +21,7 @@ public class LoginAction extends ActionSupport implements Preparable {
 	public String login()
 	{
 		try {
-			if ( (username == -1) || password.isEmpty()  )
+			if ( (username != -1) && !password.isEmpty()  )
 				if ( selectedRole.equals("Profesor") )
 				{
 					dao.loginProfesor(username, password);
@@ -37,10 +37,10 @@ public class LoginAction extends ActionSupport implements Preparable {
 			}
 		} catch (UserNotFoundException e) {
 			addActionError( getText("errors.required.login.name") );
-			return ERROR;
+			return INPUT;
 		} catch (IncorrectPasswordException e) {
 			addActionError( getText("errors.required.login.password") );
-			return ERROR;
+			return INPUT;
 		}
 	}
 
