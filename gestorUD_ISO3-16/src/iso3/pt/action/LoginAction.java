@@ -11,10 +11,10 @@ public class LoginAction extends ActionSupport {
 	{
 		
 		if ( ( username == "123" ) && ( password == "123" ) )
-			if ( profesor )
-				return "listStudentSubjects"//Lista Asig  impartida por Profesor
-			else return "listLecturerSubjects"//Lista Asig matriculadas alumno
-		
+			if ( true )//profesor )
+				return "listStudentSubjects"; //Lista Asig impartida por Profesor
+			else return "listLecturerSubjects"; //Lista Asig matriculadas alumno
+		else return INPUT;
 	}
 	
 
