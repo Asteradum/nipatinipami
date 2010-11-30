@@ -13,7 +13,7 @@ import iso3.pt.model.Evaluacion;
 import iso3.pt.model.Profesor;
 import iso3.pt.model.Unidad;
 
-public class PtDaoService implements PtService {
+public class PtDaoService implements IPtService {
     private PtDAO dao;
 
     public PtDaoService() {
