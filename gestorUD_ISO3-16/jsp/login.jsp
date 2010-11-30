@@ -7,7 +7,7 @@
 		type="text/css"/>
 	</head>
 	<body>
-		<s:form action="doLogin" method="POST">
+		<s:form action="login" method="POST">
 			<tr>
 				<td colspan="2">Login</td>
 			</tr>

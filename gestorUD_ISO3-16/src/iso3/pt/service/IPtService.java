@@ -12,7 +12,7 @@ import iso3.pt.model.Evaluacion;
 import iso3.pt.model.Profesor;
 import iso3.pt.model.Unidad;
 
-public interface PtService {
+public interface IPtService {
 	public Profesor getProfesor(int idAsignatura);
 	public Set<Alumno> getAlumnos(int idAsignatura);
 	public List<Evaluacion> getEvaluacionesOrderedByAsignatura(int idAlumno);
