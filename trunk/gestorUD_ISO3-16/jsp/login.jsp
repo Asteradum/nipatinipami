@@ -7,7 +7,7 @@
 		type="text/css"/>
 	</head>
 	<body>
-		<s:form action="login" method="POST">
+		<s:form action="%{getText('label.login')}" method="POST">
 			<tr>
 				<td colspan="2">Login</td>
 			</tr>
@@ -19,6 +19,7 @@
 			</tr>
 			<s:textfield name="username" label="%{getText('label.login.name')}"/>
 			<s:password name="password" label="%{getText('label.login.password')}"/>
+			<s:select name="selectedRole" label="%{getText('label.login.rol')}" list="roles"/>
 			<s:submit value="%{getText('label.login.button')}" align="center"/>
 		</s:form>
 	</body>
