@@ -2,11 +2,15 @@ package iso3.pt.action;
 
 import iso3.pt.dao.excepciones.IncorrectPasswordException;
 import iso3.pt.dao.excepciones.UserNotFoundException;
+import iso3.pt.model.Alumno;
+import iso3.pt.model.Profesor;
 import iso3.pt.service.PtDaoService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -17,26 +21,28 @@ public class LoginAction extends ActionSupport implements Preparable {
 	private String selectedRole = null;
 	private List<String> roles = null;
 	private PtDaoService dao = new PtDaoService();
+	private Map session = null;
+	private Profesor prof = null;
+	private Alumno al = null;
 	
 	public String login()
 	{
 		try {
-			if ( !username.isEmpty() && !password.isEmpty()  )
-				if ( selectedRole.equals("Profesor") )
-				{
-					dao.loginProfesor(Integer.parseInt(username), password);
-					//ActionContext.getContext().getSession());
-					return "listLecturerSubjects"; //Lista Asig impartida por Profesor
-				}
-				else {
-					dao.loginAlumno(Integer.parseInt(username), password);
-					//ActionContext.getContext().getSession());
-					return "listStudentSubjects"; //Lista Asig matriculadas alumno
-				}	
-			else { 
-				addActionError(getText("errors.required.login"));
-				return INPUT;
+			if ( selectedRole.equals("Profesor") )
+			{
+				prof = dao.loginProfesor(Integer.parseInt(username), password);
+				session = ActionContext.getContext().getSession();
+				session.put("dni", username);
+                session.put("nombre", prof.getNombre());                
+				return "listLecturerSubjects"; //Lista Asig impartida por Profesor
 			}
+			else {
+				al = dao.loginAlumno(Integer.parseInt(username), password);
+				session = ActionContext.getContext().getSession();
+				session.put("dni", username);
+				session.put("nombre", al.getNombre());	
+				return "listStudentSubjects"; //Lista Asig matriculadas alumno
+			}	
 		} catch (UserNotFoundException e) {
 			addActionError( getText("errors.login.name") );
 			return INPUT;
@@ -46,7 +52,11 @@ public class LoginAction extends ActionSupport implements Preparable {
 		}
 	}
 	
-	//public String Logout()
+	public String Logout()
+	{
+		session.clear();
+		return SUCCESS;
+	}
 
 	public String getUsername() {
 		return username;
@@ -80,15 +90,23 @@ public class LoginAction extends ActionSupport implements Preparable {
 		this.selectedRole = selectedRole;
 	}
 
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
 	@Override
 	public void prepare() throws Exception {
-		
+		/* No utilizo prepare porque sino Showlist no funciona correctamente ya que 
+		 * intenta cargar el JSP sin tener los valores del comboBox (al no hacer un 
+		 * class="LoginAction")
 		roles = new ArrayList<String>();
-		/*roles.add("Alumno");
-		roles.add("Profesor");
-		*/
 	 	roles.add( getText("label.login.rol.alumno") );
 		roles.add( getText("label.login.rol.profesor") );
+		*/
 	}
 	
 

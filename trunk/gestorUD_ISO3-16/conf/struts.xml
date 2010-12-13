@@ -8,7 +8,7 @@
 		<!-- Default interceptor stack. -->
 		<default-interceptor-ref name="paramsPrepareParamsStack"/>
 		
-		<action name="showLogin" class="iso3.pt.action.LoginAction">
+		<action name="showLogin">
 			<result>/jsp/login.jsp</result>
         </action>
 
@@ -18,6 +18,10 @@
 			<result  name="error">/jsp/error.jsp</result>
 			<result  name="listStudentSubjects">/jsp/studentSubjects.jsp</result>
 			<result  name="listLecturerSubjects">/jsp/lecturerSubjects.jsp</result>
+        </action>
+        
+        <action name="logout" class="iso3.pt.action.LoginAction" method="logout">
+			<result  name="success">/jsp/login.jsp</result>
         </action>
 		
 	</package>
