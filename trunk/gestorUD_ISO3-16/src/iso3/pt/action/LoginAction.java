@@ -1,18 +1,18 @@
 package iso3.pt.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import iso3.pt.dao.excepciones.IncorrectPasswordException;
 import iso3.pt.dao.excepciones.UserNotFoundException;
 import iso3.pt.service.PtDaoService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 public class LoginAction extends ActionSupport implements Preparable {
 	
-	private int username = -1;
+	private String username = null;
 	private String password = null;
 	private String selectedRole = null;
 	private List<String> roles = null;
@@ -21,34 +21,38 @@ public class LoginAction extends ActionSupport implements Preparable {
 	public String login()
 	{
 		try {
-			if ( (username != -1) && !password.isEmpty()  )
+			if ( !username.isEmpty() && !password.isEmpty()  )
 				if ( selectedRole.equals("Profesor") )
 				{
-					dao.loginProfesor(username, password);
+					dao.loginProfesor(Integer.parseInt(username), password);
+					//ActionContext.getContext().getSession());
 					return "listLecturerSubjects"; //Lista Asig impartida por Profesor
 				}
 				else {
-					dao.loginAlumno(username, password);					
+					dao.loginAlumno(Integer.parseInt(username), password);
+					//ActionContext.getContext().getSession());
 					return "listStudentSubjects"; //Lista Asig matriculadas alumno
 				}	
 			else { 
-				addActionError("Compulsory to specify both username and password!");
+				addActionError(getText("errors.required.login"));
 				return INPUT;
 			}
 		} catch (UserNotFoundException e) {
-			addActionError( getText("errors.required.login.name") );
+			addActionError( getText("errors.login.name") );
 			return INPUT;
 		} catch (IncorrectPasswordException e) {
-			addActionError( getText("errors.required.login.password") );
+			addActionError( getText("errors.login.password") );
 			return INPUT;
 		}
 	}
+	
+	//public String Logout()
 
-	public int getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
-	public void setUsername(int username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 

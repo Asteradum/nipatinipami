@@ -9,7 +9,8 @@
 <s:actionerror/>
 <br/>
 In order that the development team can address this error, please report what you were doing that caused this error.
-<br/><br/>
+<br/>
+<br/>
 The following information can help the development
 team find where the error happened and what can be done to prevent it from
 happening in the future.
