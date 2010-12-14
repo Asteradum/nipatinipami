@@ -3,12 +3,14 @@ package iso3.pt.action;
 import iso3.pt.dao.excepciones.IncorrectPasswordException;
 import iso3.pt.dao.excepciones.UserNotFoundException;
 import iso3.pt.model.Alumno;
+import iso3.pt.model.Asignatura;
 import iso3.pt.model.Profesor;
 import iso3.pt.service.PtDaoService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,11 +21,11 @@ public class LoginAction extends ActionSupport implements Preparable {
 	private String username = null;
 	private String password = null;
 	private String selectedRole = null;
-	private List<String> roles = null;
 	private PtDaoService dao = new PtDaoService();
 	private Map session = null;
 	private Profesor prof = null;
 	private Alumno al = null;
+	private Set<Asignatura> listaAsignaturas = null;
 	
 	public String login()
 	{
@@ -33,14 +35,16 @@ public class LoginAction extends ActionSupport implements Preparable {
 				prof = dao.loginProfesor(Integer.parseInt(username), password);
 				session = ActionContext.getContext().getSession();
 				session.put("dni", username);
-                session.put("nombre", prof.getNombre());                
+                session.put("nombre", prof.getNombre());
+                listaAsignaturas = dao.getAsignaturasProfesor(Integer.parseInt(username));
 				return "listLecturerSubjects"; //Lista Asig impartida por Profesor
 			}
 			else {
 				al = dao.loginAlumno(Integer.parseInt(username), password);
 				session = ActionContext.getContext().getSession();
 				session.put("dni", username);
-				session.put("nombre", al.getNombre());	
+				session.put("nombre", al.getNombre());
+				listaAsignaturas = dao.getAsignaturas(Integer.parseInt(username));
 				return "listStudentSubjects"; //Lista Asig matriculadas alumno
 			}	
 		} catch (UserNotFoundException e) {
@@ -68,14 +72,6 @@ public class LoginAction extends ActionSupport implements Preparable {
 		this.password = password;
 	}
 
-	public List<String> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
-
 	public String getSelectedRole() {
 		return selectedRole;
 	}
@@ -90,6 +86,14 @@ public class LoginAction extends ActionSupport implements Preparable {
 
 	public void setSession(Map session) {
 		this.session = session;
+	}
+
+	public void setListaAsignaturas(Set<Asignatura> listaAsignaturas) {
+		this.listaAsignaturas = listaAsignaturas;
+	}
+
+	public Set<Asignatura> getListaAsignaturas() {
+		return listaAsignaturas;
 	}
 
 	@Override
