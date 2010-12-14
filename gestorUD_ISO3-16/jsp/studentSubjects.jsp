@@ -13,7 +13,7 @@
 		<table>
 			<tr>
 				<th>
-					<a href="<s:url value="/jsp/login.jsp"/>"/>
+					<a href="<s:url action="subjectRegistration" escapeAmp="false"/>"/>
 						<s:text name="label.students.enroll"/>
 					</a>	
 				</th>
@@ -23,7 +23,7 @@
 					</a>	
 				</th>
 				<th>					
-					<a href="<s:url id="urlLogout" action="logout" escapeAmp="false"/>"/>
+					<a href="<s:url action="logout" escapeAmp="false"/>"/>
 						<s:text name="label.logout"/>
 					</a>	
 				</th>

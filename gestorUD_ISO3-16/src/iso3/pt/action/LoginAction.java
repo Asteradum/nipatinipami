@@ -56,6 +56,7 @@ public class LoginAction extends ActionSupport implements Preparable {
 		}
 	}
 
+
 	public String getUsername() {
 		return username;
 	}
