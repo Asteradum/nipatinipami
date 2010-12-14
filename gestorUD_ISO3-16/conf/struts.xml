@@ -31,6 +31,19 @@
         <action name="enroll" class="iso3.pt.action.EnrollAction" method="enroll">
 			<result>/jsp/studentSubjects.jsp</result>
         </action>
+        
+        <action name="allSubjectsGrades" class="iso3.pt.action.AllSubjectsGradesAction">
+			<result>/jsp/studentAllSubjectsGrades.jsp</result>
+        </action>
+        
+        <action name="returnStudentSubjects">
+			<result>/jsp/studentSubjects.jsp</result>
+        </action>
+		
+		<action name="subjectGrade" class="iso3.pt.action.SubjectGradeAction">
+			<result>/jsp/studentSubjects.jsp</result>
+        </action>
+		
 		
 	</package>
 </struts>

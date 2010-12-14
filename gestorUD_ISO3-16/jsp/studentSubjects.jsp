@@ -18,7 +18,7 @@
 					</a>	
 				</th>
 				<th>
-					<a href="<s:url value="/jsp/login.jsp"/>"/>
+					<a href="<s:url action="allSubjectsGrades" escapeAmp="false"/>"/>
 						<s:text name="label.students.grades"/>
 					</a>	
 				</th>
@@ -53,7 +53,12 @@
 						<s:text name="label.students.unenroll"/>
 					</a></td>
 		            <td class="nowrap">
-					<a href="<s:url value="/jsp/login.jsp"/>"/>
+					<a href="
+						<s:url action="subjectGrade" escapeAmp="false">
+							<s:param name="subject.name" value="%{ nombre }"/>
+							<s:param name="subject.code" value="%{ code }"/>
+						</s:url>
+						"/>
 						<s:text name="label.students.subjectgrade"/>
 					</a>
 					</td>
