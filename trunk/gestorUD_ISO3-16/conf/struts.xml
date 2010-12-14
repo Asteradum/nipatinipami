@@ -21,7 +21,15 @@
         </action>
         
         <action name="logout" class="iso3.pt.action.LogoutAction" method="logout">
-			<result  name="success" type="chain">showLogin</result>
+			<result type="redirectAction">showLogin</result>
+        </action>
+        
+        <action name="subjectRegistration" class="iso3.pt.action.EnrollAction">
+			<result>/jsp/studentSubjectsRegistrationForm.jsp</result>
+        </action>
+        
+        <action name="enroll" class="iso3.pt.action.EnrollAction" method="enroll">
+			<result>/jsp/studentSubjects.jsp</result>
         </action>
 		
 	</package>

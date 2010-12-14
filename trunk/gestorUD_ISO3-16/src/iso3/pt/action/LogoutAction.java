@@ -12,7 +12,7 @@ public class LogoutAction extends ActionSupport implements Preparable {
 	private Map session = null;
 
 	
-	public String Logout()
+	public String logout()
 	{
 		session = ActionContext.getContext().getSession();
 		session.clear();
