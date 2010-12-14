@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javassist.bytecode.Descriptor.Iterator;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -19,25 +21,25 @@ import com.opensymphony.xwork2.Preparable;
 public class EnrollAction extends ActionSupport implements Preparable {
 
 	private PtDaoService dao = new PtDaoService();
-	private Set<Asignatura> subjectList = null;
+	private List<Asignatura> subjectList = new ArrayList<Asignatura>();
 	private String selectedSubject = null;
-	private int subjectId;
-	private int dni;
+
 	private Map session = null;
 	
 
 	public void enroll()
 	{
 		session = ActionContext.getContext().getSession();
-		dao.matricular((Integer) session.get("dni"), subjectId );
+		//dao.matricular( Integer.parseInt((String) session.get("dni")), Integer.parseInt(subjectId) );
 		
 	}
 
-	public Set<Asignatura> getListaAsignaturas() {
+	public List<Asignatura> getListaAsignaturas() {
 		return subjectList;
 	}
+	
 
-	public void setListaAsignaturas(Set<Asignatura> listaAsignaturas) {
+	public void setListaAsignaturas(List<Asignatura> listaAsignaturas) {
 		this.subjectList = listaAsignaturas;
 	}
 
@@ -49,19 +51,10 @@ public class EnrollAction extends ActionSupport implements Preparable {
 		this.selectedSubject = selectedSubject;
 	}
 
-	public int getSubjectId() {
-		return subjectId;
-	}
-
-	public void setSubjectId(int subjectId) {
-		this.subjectId = subjectId;
-	}
-
 	@Override
 	public void prepare() throws Exception {
-		
-		subjectList = dao.getAsignaturas();
-		
+		// = dao.getAsignaturas();
+				
 	}
 	
 
