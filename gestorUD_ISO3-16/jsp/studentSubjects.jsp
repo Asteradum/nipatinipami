@@ -40,11 +40,23 @@
 		        <th><s:text name="label.students.subjects.table.students"/></th>
 		        <th>&nbsp;&nbsp;</th>		       	
 		    </tr>
-		    <s:iterator value="Asignaturas" status="status">
+		    <s:iterator value="listaAsignaturas" status="status">
 		        <tr class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
-		            <td class="nowrap"><s:property value="fullName"/></td>
-		            <td class="nowrap"><s:property value="nationality"/></td>
-		            <td class="nowrap"><s:property value="language"/></td>
+		            <td class="nowrap"><s:property value="%{ code }"/></td>
+		            <td class="nowrap"><s:property value="%{ nombre }"/></td>
+		            <td class="nowrap"><s:property value="%{ creditos }"/></td>
+		            <td class="nowrap"><s:property value="%{ Profesor.nombre }"/></td>
+		            <td class="nowrap"><s:property value="%{ unidades.size }"/></td>
+		            <td class="nowrap"><s:property value="%{ alumnos.size }"/></td>
+		            <td class="nowrap">
+		            <a href="<s:url value="/jsp/login.jsp"/>"/>
+						<s:text name="label.students.unenroll"/>
+					</a></td>
+		            <td class="nowrap">
+					<a href="<s:url value="/jsp/login.jsp"/>"/>
+						<s:text name="label.students.subjectgrade"/>
+					</a>
+					</td>
 		        </tr>
 		    </s:iterator>
 		</table>
