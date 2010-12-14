@@ -20,8 +20,8 @@
 			<result  name="listLecturerSubjects">/jsp/lecturerSubjects.jsp</result>
         </action>
         
-        <action name="logout" class="iso3.pt.action.LoginAction" method="logout">
-			<result  name="success">/jsp/login.jsp</result>
+        <action name="logout" class="iso3.pt.action.LogoutAction" method="logout">
+			<result  name="success" type="chain">showLogin</result>
         </action>
 		
 	</package>

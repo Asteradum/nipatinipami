@@ -14,16 +14,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
-public class LoginAction extends ActionSupport implements Preparable {
+public class AsignaturasAction extends ActionSupport implements Preparable {
 	
-	private String username = null;
-	private String password = null;
-	private String selectedRole = null;
-	private List<String> roles = null;
-	private PtDaoService dao = new PtDaoService();
-	private Map session = null;
-	private Profesor prof = null;
-	private Alumno al = null;
 	
 	public String login()
 	{
@@ -52,47 +44,7 @@ public class LoginAction extends ActionSupport implements Preparable {
 		}
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public List<String> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
-
-	public String getSelectedRole() {
-		return selectedRole;
-	}
-
-	public void setSelectedRole(String selectedRole) {
-		this.selectedRole = selectedRole;
-	}
-
-	public Map getSession() {
-		return session;
-	}
-
-	public void setSession(Map session) {
-		this.session = session;
-	}
-
-	@Override
+		@Override
 	public void prepare() throws Exception {
 		/* No utilizo prepare porque sino Showlist no funciona correctamente ya que 
 		 * intenta cargar el JSP sin tener los valores del comboBox (al no hacer un 
