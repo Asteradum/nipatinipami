@@ -33,8 +33,7 @@
 		        <th><s:text name="label.students.subjects.table.code"/></th>
 		        <th><s:text name="label.students.subjects.table.name"/></th>
 		        <th><s:text name="label.students.subjects.table.credits"/></th>
-		        <th><s:text name="label.students.subjects.table.lecturer"/></th>
-		        <th><s:text name="label.students.subjects.table.units"/></th>
+		        <th><s:text name="label.students.subjects.table.lecturer"/></th>		        
 		        <th><s:text name="label.students.subjects.table.students"/></th>
 		        <th>&nbsp;&nbsp;</th>		       	
 		    </tr>
@@ -43,8 +42,7 @@
 		            <td class="nowrap"><s:property value="%{ code }"/></td>
 		            <td class="nowrap"><s:property value="%{ nombre }"/></td>
 		            <td class="nowrap"><s:property value="%{ creditos }"/></td>
-		            <td class="nowrap"><s:property value="%{ Profesor.nombre }"/></td>
-		            <td class="nowrap"><s:property value="%{ unidades.size }"/></td>
+		            <td class="nowrap"><s:property value="%{ Profesor.nombre }"/></td>		          
 		            <td class="nowrap"><s:property value="%{ alumnos.size }"/></td>		         
 		        </tr>
 		    </s:iterator>
@@ -68,7 +66,7 @@
 		</table>
 		
 		<br/>
-		<s:form action="returnStudentSubjects" method="POST">
+		<s:form action="studentSubjects" method="POST">
 			<table>	
 					<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/></td>
 				</tr>

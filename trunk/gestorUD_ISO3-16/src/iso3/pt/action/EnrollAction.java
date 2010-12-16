@@ -21,25 +21,39 @@ import com.opensymphony.xwork2.Preparable;
 public class EnrollAction extends ActionSupport implements Preparable {
 
 	private PtDaoService dao = new PtDaoService();
-	private List<Asignatura> subjectList = new ArrayList<Asignatura>();
+	private Set<Asignatura> subjectList = null;
 	private String selectedSubject = null;
+	private int subjectId;
 
 	private Map session = null;
-	
 
-	public void enroll()
+	public String enroll()
 	{
 		session = ActionContext.getContext().getSession();
-		//dao.matricular( Integer.parseInt((String) session.get("dni")), Integer.parseInt(subjectId) );
+		/*
+		System.out.println("El id de la asignatura es: " + subjectId);
+		System.out.println("El dni del alumno es: " + (String) session.get("dni"));
+		*/
 		
+		dao.matricular( Integer.parseInt((String) session.get("dni")), subjectId );
+		
+		return SUCCESS;
 	}
 
-	public List<Asignatura> getListaAsignaturas() {
-		return subjectList;
+	public String unenroll()
+	{
+		session = ActionContext.getContext().getSession();
+		/*
+		System.out.println("El id de la asignatura es: " + subjectId);
+		System.out.println("El dni del alumno es: " + (String) session.get("dni"));
+		*/
+		dao.desmatricular(Integer.parseInt((String) session.get("dni")), subjectId);
+		subjectList = dao.getAsignaturas(Integer.parseInt((String) session.get("dni")));
+		
+		return SUCCESS;
 	}
-	
 
-	public void setListaAsignaturas(List<Asignatura> listaAsignaturas) {
+	public void setListaAsignaturas(Set<Asignatura> listaAsignaturas) {
 		this.subjectList = listaAsignaturas;
 	}
 
@@ -51,10 +65,21 @@ public class EnrollAction extends ActionSupport implements Preparable {
 		this.selectedSubject = selectedSubject;
 	}
 
+	public Set<Asignatura> getSubjectList() {
+		return subjectList;
+	}
+
+	public int getSubjectId() {
+		return subjectId;
+	}
+
+	public void setSubjectId(int subjectId) {
+		this.subjectId = subjectId;
+	}
+
 	@Override
 	public void prepare() throws Exception {
-		// = dao.getAsignaturas();
-				
+		subjectList = dao.getAsignaturas();
 	}
 	
 

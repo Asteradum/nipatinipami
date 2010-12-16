@@ -47,7 +47,7 @@
 		</table>
 		
 		<br/>
-		<s:form action="returnStudentSubjects" method="POST">
+		<s:form action="studentSubjects" method="POST">
 			<table>	
 					<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/></td>
 				</tr>

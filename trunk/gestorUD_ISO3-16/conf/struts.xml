@@ -16,27 +16,27 @@
 			<result  name="success">/jsp/login.jsp</result>
             <result  name="input">/jsp/login.jsp</result>
 			<result  name="error">/jsp/error.jsp</result>
-			<result  name="listStudentSubjects">/jsp/studentSubjects.jsp</result>
+			<result  name="listStudentSubjects" type="redirectAction">studentSubjects</result>
 			<result  name="listLecturerSubjects">/jsp/lecturerSubjects.jsp</result>
         </action>
         
         <action name="logout" class="iso3.pt.action.LogoutAction" method="logout">
-			<result type="redirectAction">showLogin</result>
+			<result type="chain">showLogin</result>
         </action>
         
         <action name="subjectRegistration" class="iso3.pt.action.EnrollAction">
 			<result>/jsp/studentSubjectsRegistrationForm.jsp</result>
         </action>
         
-        <action name="enroll" class="iso3.pt.action.EnrollAction" method="enroll">
-			<result>/jsp/studentSubjects.jsp</result>
+        <action name="enroll" class="iso3.pt.action.EnrollAction">
+			<result type="chain">studentSubjects</result>
         </action>
         
         <action name="allSubjectsGrades" class="iso3.pt.action.AllSubjectsGradesAction">
 			<result>/jsp/studentAllSubjectsGrades.jsp</result>
         </action>
         
-        <action name="returnStudentSubjects">
+        <action name="studentSubjects" class="iso3.pt.action.StudentAction">
 			<result>/jsp/studentSubjects.jsp</result>
         </action>
 		
