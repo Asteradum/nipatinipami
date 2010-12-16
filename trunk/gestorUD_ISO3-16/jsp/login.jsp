@@ -16,7 +16,7 @@
 					</td>
 					<td class="tdLabel"><s:textfield name="username" label="%{getText('label.login.name')}"/></td>
 					<td class="tdLabel"><s:password name="password" label="%{getText('label.login.password')}"/></td>
-					<td class="tdLabel"><s:select name="selectedRole" label="%{getText('label.login.rol')}" list="#{'01':'Alumno', '02':'Profesor'}"/></td>
+					<td class="tdLabel"><s:select name="selectedRole" label="%{getText('label.login.rol')}" list="{'Alumno', 'Profesor'}"/></td>
 					<td class="tdLabel"><s:submit value="%{getText('label.login.button')}" align="center"/></td>
 				</tr>
 			</table>			

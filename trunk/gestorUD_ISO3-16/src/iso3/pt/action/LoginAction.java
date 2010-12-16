@@ -30,6 +30,7 @@ public class LoginAction extends ActionSupport implements Preparable {
 	public String login()
 	{
 		try {
+			System.out.println("El rol seleccionado es: " + selectedRole);
 			if ( selectedRole.equals("Profesor") )
 			{
 				prof = dao.loginProfesor(Integer.parseInt(username), password);

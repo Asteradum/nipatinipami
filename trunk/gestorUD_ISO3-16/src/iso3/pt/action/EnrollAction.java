@@ -27,6 +27,10 @@ public class EnrollAction extends ActionSupport implements Preparable {
 
 	private Map session = null;
 
+	public String execute() throws Exception {
+		return SUCCESS;
+	}
+	
 	public String enroll()
 	{
 		session = ActionContext.getContext().getSession();
@@ -37,7 +41,7 @@ public class EnrollAction extends ActionSupport implements Preparable {
 		
 		dao.matricular( Integer.parseInt((String) session.get("dni")), subjectId );
 		
-		return SUCCESS;
+		return "Exito";
 	}
 
 	public String unenroll()
@@ -50,7 +54,7 @@ public class EnrollAction extends ActionSupport implements Preparable {
 		dao.desmatricular(Integer.parseInt((String) session.get("dni")), subjectId);
 		subjectList = dao.getAsignaturas(Integer.parseInt((String) session.get("dni")));
 		
-		return SUCCESS;
+		return "Exito";
 	}
 
 	public void setListaAsignaturas(Set<Asignatura> listaAsignaturas) {
