@@ -21,15 +21,12 @@
         </action>
         
         <action name="logout" class="iso3.pt.action.LogoutAction" method="logout">
-			<result type="chain">showLogin</result>
-        </action>
-        
-        <action name="subjectRegistration" class="iso3.pt.action.EnrollAction">
-			<result>/jsp/studentSubjectsRegistrationForm.jsp</result>
+			<result type="redirectAction">showLogin</result>
         </action>
         
         <action name="enroll" class="iso3.pt.action.EnrollAction">
-			<result type="chain">studentSubjects</result>
+      		<result name="Exito" type="redirectAction">studentSubjects</result>
+        	<result name="success">/jsp/studentSubjectsRegistrationForm.jsp</result>
         </action>
         
         <action name="allSubjectsGrades" class="iso3.pt.action.AllSubjectsGradesAction">

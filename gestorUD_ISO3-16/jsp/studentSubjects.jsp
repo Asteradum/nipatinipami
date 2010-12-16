@@ -13,7 +13,7 @@
 		<table>
 			<tr>
 				<th>
-					<a href="<s:url action="subjectRegistration" escapeAmp="false"/>"/>
+					<a href="<s:url action="enroll" escapeAmp="false"/>"/>
 						<s:text name="label.students.enroll"/>
 					</a>	
 				</th>
