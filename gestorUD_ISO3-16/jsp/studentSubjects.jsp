@@ -35,7 +35,8 @@
 		        <th><s:text name="label.students.subjects.table.code"/></th>
 		        <th><s:text name="label.students.subjects.table.name"/></th>
 		        <th><s:text name="label.students.subjects.table.credits"/></th>
-		        <th><s:text name="label.students.subjects.table.lecturer"/></th>		    
+		        <th><s:text name="label.students.subjects.table.lecturer"/></th>
+		        <th><s:text name="label.students.subjects.table.units"/></th>
 		        <th><s:text name="label.students.subjects.table.students"/></th>
 		        <th>&nbsp;&nbsp;</th>		       	
 		    </tr>
@@ -47,7 +48,11 @@
 		            <td class="nowrap"><s:property value="%{ Profesor.nombre }"/></td>		            
 		            <td class="nowrap"><s:property value="%{ alumnos.size }"/></td>
 		            <td class="nowrap">
-		            <a href="<s:url value="/jsp/login.jsp"/>"/>
+		            <a href="
+		            	<s:url action="enroll!unenroll" escapeAmp="false">
+		            		<s:param name="subjectId" value="%{ code }"/>
+		            	</s:url>
+					"/>
 						<s:text name="label.students.unenroll"/>
 					</a></td>
 		            <td class="nowrap">
@@ -56,7 +61,7 @@
 							<s:param name="name" value="%{ nombre }"/>
 							<s:param name="code" value="%{ code }"/>
 						</s:url>
-						"/>
+					"/>
 						<s:text name="label.students.subjectgrade"/>
 					</a>
 					</td>

@@ -10,20 +10,17 @@
 		
 		<h1><s:text name="label.students.subjectsRegistrationForm"/> <s:property value="#session.nombre"/> ( <s:property value="#session.dni"/> )</h1>
 		
-		<s:form action="enroll" method="POST">
+		<s:form action="enroll!enroll" method="POST">
 			<table>	
 				<tr>
-					<td class="error"><s:actionerror />
-						<!--<s:fielderror />-->
+					<td class="tdLabel">
+						<s:select name="subjectId" list="subjectList" listValue="nombre" listKey="code" label="%{getText('label.students.SubjectRegitration')}"/>
 					</td>
-					<td class="tdLabel"><s:select name="selectedSubject" key="subjectId" label="%{getText('label.students.SubjectRegitration')}" list="subjectList"/></td>
 					<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.button')}" align="center"/></td>
-					<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/></td>
+					<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.cancel')}" align="center" name="redirect-action:studentSubjects"/></td>
 				</tr>
 			</table>			
 		</s:form>
-		
-		
 	</body>
 
 </html>
