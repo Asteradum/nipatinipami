@@ -42,5 +42,14 @@
         </action>
 		
 		
+		
+		<action name="subjectStudents" class="iso3.pt.action.SubjectStudentsAction">
+			<result>/jsp/subjectStudents.jsp</result>
+        </action>
+        
+        <action name="StudentSubjectMarkingForm" class="iso3.pt.action.StudentSubjectMarkingFormAction">
+			<result>/jsp/StudentSubjectMarkingForm.jsp</result>
+        </action>
+		  
 	</package>
 </struts>
