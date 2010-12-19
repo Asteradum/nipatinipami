@@ -37,7 +37,7 @@ public class LoginAction extends ActionSupport implements Preparable {
 				session = ActionContext.getContext().getSession();
 				session.put("dni", username);
                 session.put("nombre", prof.getNombre());
-                listaAsignaturas = dao.getAsignaturasProfesor(Integer.parseInt(username));
+                listaAsignaturas = dao.getAsignaturasProfesor(prof.getId());
 				return "listLecturerSubjects"; //Lista Asig impartida por Profesor
 			}
 			else {
