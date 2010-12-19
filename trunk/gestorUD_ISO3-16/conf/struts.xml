@@ -42,9 +42,18 @@
         </action>
 		
 		
+		<action name="lecturerMarksCancel" class="iso3.pt.action.LecturerAction" method="Asignaturas">
+			<result>/jsp/subjectStudents.jsp</result>
+        </action>
+		
 		
 		<action name="subjectStudents" class="iso3.pt.action.SubjectStudentsAction">
 			<result>/jsp/subjectStudents.jsp</result>
+        </action>
+        
+        <action name="mandarNota" class="iso3.pt.action.StudentSubjectMarkAction" method="notas">
+			<result  name="success">/jsp/studentSubjectMark.jsp</result>
+            <result  name="error">/jsp/studentSubjectMarkingForm.jsp</result>
         </action>
         
         <action name="lecturerSubjects" class="iso3.pt.action.LecturerAction">
