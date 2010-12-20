@@ -31,18 +31,18 @@ public class LoginAction extends ActionSupport implements Preparable {
 	{
 		try {
 			System.out.println("El rol seleccionado es: " + selectedRole);
+			session = ActionContext.getContext().getSession();
+			session.put("rol", selectedRole);
 			if ( selectedRole.equals("Profesor") )
 			{
 				prof = dao.loginProfesor(Integer.parseInt(username), password);
-				session = ActionContext.getContext().getSession();
 				session.put("dni", username);
-                session.put("nombre", prof.getNombre());
+                session.put("nombre", prof.getNombre());                
                 listaAsignaturas = dao.getAsignaturasProfesor(prof.getId());
 				return "listLecturerSubjects"; //Lista Asig impartida por Profesor
 			}
 			else {
 				al = dao.loginAlumno(Integer.parseInt(username), password);
-				session = ActionContext.getContext().getSession();
 				session.put("dni", username);
 				session.put("nombre", al.getNombre());
 				listaAsignaturas = dao.getAsignaturas(Integer.parseInt(username));

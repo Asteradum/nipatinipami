@@ -17,7 +17,12 @@
 						<s:select name="subjectId" list="subjectList" listValue="nombre" listKey="code" label="%{getText('label.students.SubjectRegitration')}"/>
 					</td>
 					<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.button')}" align="center"/></td>
-					<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.cancel')}" align="center" name="redirect-action:studentSubjects"/></td>
+					<s:if test="#session.rol == 'Alumno'">
+						<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.cancel')}" align="center" name="redirect-action:studentSubjects"/></td>
+					</s:if>	
+					<s:else>
+						<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.cancel')}" align="center" name="redirect-action:lecturerSubjects"/></td>
+					</s:else>
 				</tr>
 			</table>			
 		</s:form>

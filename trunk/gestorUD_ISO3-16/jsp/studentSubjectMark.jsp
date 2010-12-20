@@ -18,7 +18,7 @@
 		        <th><s:text name="label.student.table.phone"/></th>
 		        <th>&nbsp;&nbsp;</th>		       	
 		    </tr>
-		    <tr>
+		    <tr class="<s:if test="#status.odd">odd</s:if><s:else>even</s:else>">
 		    	<td class="nowrap"><s:property value="al.dni"/></td>	
 		    	<td class="nowrap"><s:property value="al.nombre"/></td>	
 		    	<td class="nowrap"><s:property value="al.telefono"/></td>	
@@ -36,17 +36,17 @@
 		        <th><s:text name="label.students.subjects.table.students"/></th>
 		        <th>&nbsp;&nbsp;</th>		       	
 		    </tr>
-		    <tr>
+		    <tr class="<s:if test="#status.odd">odd</s:if><s:else>even</s:else>">
 		    	<td class="nowrap"><s:property value="asig.code"/></td>	
 		    	<td class="nowrap"><s:property value="asig.nombre"/></td>	
 		    	<td class="nowrap"><s:property value="asig.creditos"/></td>	
 		    	<td class="nowrap"><s:property value="asig.profesor.nombre"/></td>	
 		    	<td class="nowrap"><s:property value="asig.alumnos.size"/></td>		    			    	
 		    </tr>
-      <br/>
+      
 		</table>
 		
-		
+		<br/>
 		
 		<table class="borderAll">
 		    <tr>
@@ -64,10 +64,17 @@
 		    </s:iterator>
 		</table>
 		
-		
-		        <s:submit value="%{getText('label.professor.cancelar')}" name="redirect-action:lecturerMarksCancel" align="left">
-				<s:hidden name ="asigId" value="%{asig.code}"/>
-			    </s:submit>	
+		<br/>
+        <s:if test="#session.rol == 'Alumno'">
+			<s:form action="studentSubjects" method="POST">
+				<s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/>			
+			</s:form>	
+		</s:if>
+		<s:else>
+			<s:form action="lecturerSubjects" method="POST">
+				<s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/>			
+			</s:form>
+		</s:else>
 				
 	</body>
 
