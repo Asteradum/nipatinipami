@@ -45,7 +45,17 @@
 		            <td class="nowrap"><s:property value="%{ code }"/></td>
 		            <td class="nowrap"><s:property value="%{ nombre }"/></td>
 		            <td class="nowrap"><s:property value="%{ creditos }"/></td>
-		            <td class="nowrap"><s:property value="%{ Profesor.nombre }"/></td>		            
+		            <td class="nowrap"><s:property value="%{ Profesor.nombre }"/></td>
+		            <td class="nowrap">
+		            <a href="
+						<s:url action="units" escapeAmp="false">
+							<s:param name="nombreAsig" value="%{ nombre }"/>
+							<s:param name="codeAsig" value="%{ code }"/>
+						</s:url>
+						"/>
+						<s:property value="%{ unidades.size }"/>
+					</a>
+					</td>		            		            
 		            <td class="nowrap"><s:property value="%{ alumnos.size }"/></td>
 		            <td class="nowrap">
 		            <a href="

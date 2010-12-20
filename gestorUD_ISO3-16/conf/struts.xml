@@ -17,7 +17,8 @@
             <result  name="input">/jsp/login.jsp</result>
 			<result  name="error">/jsp/error.jsp</result>
 			<result  name="listStudentSubjects" type="redirectAction">studentSubjects</result>
-			<result  name="listLecturerSubjects">/jsp/lecturerSubjects.jsp</result>
+			<result  name="listLecturerSubjects" type="redirectAction">lecturerSubjects</result>
+			<result  name="logout" type="redirectAction">showLogin</result>
         </action>
         
         <action name="logout" class="iso3.pt.action.LogoutAction" method="logout">
@@ -32,18 +33,17 @@
         <action name="allSubjectsGrades" class="iso3.pt.action.AllSubjectsGradesAction">
 			<result>/jsp/studentAllSubjectsGrades.jsp</result>
         </action>
-        
+
+    	<action name="units" class="iso3.pt.action.UnitsAction">
+			<result>/jsp/units.jsp</result>
+        </action>
+            
         <action name="studentSubjects" class="iso3.pt.action.StudentAction">
 			<result>/jsp/studentSubjects.jsp</result>
         </action>
 		
 		<action name="subjectGrade" class="iso3.pt.action.SubjectGradeAction">
 			<result>/jsp/studentSubjectGrade.jsp</result>
-        </action>
-		
-		
-		<action name="lecturerMarksCancel" class="iso3.pt.action.LecturerAction" method="Asignaturas">
-			<result>/jsp/subjectStudents.jsp</result>
         </action>
 		
 		

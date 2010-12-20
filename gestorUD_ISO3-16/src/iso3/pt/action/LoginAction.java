@@ -100,13 +100,7 @@ public class LoginAction extends ActionSupport implements Preparable {
 
 	@Override
 	public void prepare() throws Exception {
-		/* No utilizo prepare porque sino Showlist no funciona correctamente ya que 
-		 * intenta cargar el JSP sin tener los valores del comboBox (al no hacer un 
-		 * class="LoginAction")
-		roles = new ArrayList<String>();
-	 	roles.add( getText("label.login.rol.alumno") );
-		roles.add( getText("label.login.rol.profesor") );
-		*/
+
 	}
 	
 
