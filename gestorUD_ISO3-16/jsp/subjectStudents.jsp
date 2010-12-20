@@ -29,10 +29,11 @@
 						<s:url action="studentSubjectMarkingForm" escapeAmp="false">
 							<s:param name="nombreAsig" value="%{ nombreAsig }"/>
 							<s:param name="dni" value="%{ dni }"/>
+							<s:param name="code" value="%{ codeAsig }"/>
 							<s:param name="nomProf" value="%{nomProf }"/>
 						</s:url>
 						"/>
-						<s:text name="label.professor.Nota"/>
+						<s:text name="label.professor.AddGrade"/>
 					  </a>
 					</td>
 		   
@@ -40,9 +41,17 @@
 		    </s:iterator>
 		</table>
 		
-		<s:form>
-		<s:submit value="%{getText('label.subjectStudents.cancelar')}" align="center" name="redirect-action:lecturerSubjects"/></td>
-		</s:form>
+		<br/>
+		<s:if test="#session.rol == 'Alumno'">
+			<s:form action="studentSubjects" method="POST">
+				<s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/>			
+			</s:form>	
+		</s:if>
+		<s:else>
+			<s:form action="lecturerSubjects" method="POST">
+				<s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/>			
+			</s:form>
+		</s:else>
 					
 		
 	</body>

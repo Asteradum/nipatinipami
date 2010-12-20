@@ -47,12 +47,19 @@
 		</table>
 		
 		<br/>
-		<s:form action="studentSubjects" method="POST">
-			<table>	
-					<td class="tdLabel"><s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/></td>
-				</tr>
-			</table>			
-		</s:form>
+		
+		<s:if test="#session.rol == 'Alumno'">
+			<s:form action="studentSubjects" method="POST">
+				<s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/>			
+			</s:form>	
+		</s:if>
+		<s:else>
+			<s:form action="lecturerSubjects" method="POST">
+				<s:submit value="%{getText('label.students.enroll.cancel')}" align="center"/>			
+			</s:form>
+		</s:else>
+		
+		
 		
 	</body>
 
